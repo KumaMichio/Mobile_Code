@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:id="@+id/root2"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:padding="16dp">
+
+    <!-- Ô nhập số nguyên -->
+    <EditText
+            android:id="@+id/etLimit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập số nguyên N"
+            android:inputType="number"
+            android:maxLines="1"
+            android:textSize="18sp" />
+
+    <!-- Cụm 6 RadioButton xếp 2 hàng, 3 cột (Flow) -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/choiceArea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp">
+
+        <RadioButton
+                android:id="@+id/rbOdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Số lẻ" />
+
+        <RadioButton
+                android:id="@+id/rbPrime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Số nguyên tố" />
+
+        <RadioButton
+                android:id="@+id/rbPerfect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Số hoàn hảo" />
+
+        <RadioButton
+                android:id="@+id/rbEven"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Số chẵn" />
+
+        <RadioButton
+                android:id="@+id/rbSquare"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Số chính phương" />
+
+        <RadioButton
+                android:id="@+id/rbFibo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Số Fibonacci" />
+
+        <!-- Flow helper: tự sắp thành 2 hàng, 3 cột -->
+        <androidx.constraintlayout.helper.widget.Flow
+                android:id="@+id/flow"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="rbOdd,rbPrime,rbPerfect,rbEven,rbSquare,rbFibo"
+                app:flow_wrapMode="chain"
+                app:flow_maxElementsWrap="3"
+                app:flow_horizontalGap="16dp"
+                app:flow_verticalGap="12dp"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Text hiển thị khi không có số nào -->
+    <TextView
+            android:id="@+id/tvEmpty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Không có số nào thỏa mãn"
+            android:textStyle="italic"
+            android:visibility="gone"
+            android:layout_marginTop="8dp"/>
+
+    <!-- Danh sách kết quả -->
+    <ListView
+            android:id="@+id/lvNumbers"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+</LinearLayout>
